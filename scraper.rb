@@ -29,26 +29,26 @@ module Fetchers
 
     
 
-    def fetch
-      uri = URI.parse("http://www.google.com/ig/api?stock=AAPL")
-      response = Net::HTTP.get_response(uri)
-      quote = Nokogiri::XML(response.body)
-      last_price = quote.xpath("//last").attribute("data").value
-      volume = quote.xpath("//volume").attribute("data").value
-      percent_change = quote.xpath("//perc_change").attribute("data").value
-      url = BASE_URL + quote.xpath("//symbol_lookup_url").attribute("data").value
+    # def fetch
+    #   uri = URI.parse("http://www.google.com/ig/api?stock=AAPL")
+    #   response = Net::HTTP.get_response(uri)
+    #   quote = Nokogiri::XML(response.body)
+    #   last_price = quote.xpath("//last").attribute("data").value
+    #   volume = quote.xpath("//volume").attribute("data").value
+    #   percent_change = quote.xpath("//perc_change").attribute("data").value
+    #   url = BASE_URL + quote.xpath("//symbol_lookup_url").attribute("data").value
       
-        puts "hello, I ran"
+    #     puts "hello, I ran"
 
-        @data = {
-          last_price: last_price,
-          volume: volume,
-          percent_change: percent_change,
-          url: url
-        }
+    #     @data = {
+    #       last_price: last_price,
+    #       volume: volume,
+    #       percent_change: percent_change,
+    #       url: url
+    #     }
 
-        puts @data      
-    end
+    #     puts @data      
+    # end
   end
 end
 
