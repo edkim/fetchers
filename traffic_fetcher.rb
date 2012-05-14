@@ -3,8 +3,7 @@ require "nokogiri"
 
 module Traffic
 	class MapQuestFetcher
-		attr_reader :data
-
+		
 		KEY = 'Fmjtd%7Cluua2d6t2u%2Cb5%3Do5-hr85g'
 		BASE_URL = "http://www.mapquestapi.com/traffic/v1/"
 
@@ -17,25 +16,21 @@ module Traffic
 
 		MQ_URL = "#{BASE_URL}incidents?key=#{KEY}&callback=handleIncidentsResponse&boundingBox=#{BOUNDING_BOX}&filters=incidents&inFormat=kvp&outFormat=xml"
 
-		
-		def run
-			uri = URI.parse(MQ_URL)
-		  response = Net::HTTP.get_response(uri)
-		  traffic_data = Nokogiri::XML(response.body)
-		  incidents = traffic_data.xpath("//severity")  #bucket by severity
-		  		
-		  @data = {
-		    incidents: incidents
-		  }
-
-		  puts @data
+		def initialize
+			@uri = URI.parse(MQ_URL)
+			@response = Net::HTTP.get_response(@uri)
+			@traffic_data = Nokogiri::XML(@response.body)
+			@incident_ary
 		end
 
+		def get_incidents			
+		  incidents = @traffic_data.xpath("//Incident").children
 		
-
-		#to do: Store all incident data into an array of hashes
-		#id: id
-		#severity: severity
+		  incidents.each do |incident| 		  
+		  	puts incident.name
+		  	puts incident.text
+		  end			 		 
+		end
 
 	end
 end
