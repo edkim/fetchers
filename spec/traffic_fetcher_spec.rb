@@ -8,7 +8,7 @@ module Traffic
 
 		it "returns traffic incident data" do
 			@data = @fetcher.get_incidents
-			@data.should_not be_empty
+			@data.should_not be_empty ]
 		end
 
 	end
