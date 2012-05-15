@@ -6,15 +6,9 @@ module Traffic
 			@fetcher = MapQuestFetcher.new
 		end
 
-
-		# it "gets traffic data" do		
-		# 	@fetcher.run
-		# 	@fetcher.data.should_not be_nil
-		# end
-
 		it "returns traffic incident data" do
 			@data = @fetcher.get_incidents
-			@data[1].should_not be_nil
+			@data.should_not be_empty
 		end
 
 	end
