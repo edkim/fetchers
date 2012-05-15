@@ -6,10 +6,18 @@ module Traffic
 			@fetcher = MapQuestFetcher.new
 		end
 
-		it "returns traffic incident data" do
+		it "returns traffic incident data from MapQuest" do
 			@data = @fetcher.get_incidents
 			@data.should_not be_empty
 		end
-
 	end
+
+	describe BingFetcher do
+		it "returns traffic incident data from Bing" do
+			@fetcher = BingFetcher.new
+			@data = @fetcher.get_incidents
+			@data.should_not be_empty
+		end
+	end
+	
 end
