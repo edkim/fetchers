@@ -5,9 +5,8 @@ This program uses the MapQuest and Bing Maps APIs to collect data about traffic 
 
 ##Example Usage
 
-'bing_fetcher = Traffic::BingFetcher.new(api_key)'
-
-bing_fetcher.fetch("Washington, DC")
+    bing_fetcher = Traffic::BingFetcher.new(api_key)
+    bing_fetcher.fetch("Washington, DC")
 
 
 ##To Do:
