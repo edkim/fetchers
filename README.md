@@ -3,12 +3,19 @@ Traffic Fetcher
 
 This program uses the MapQuest and Bing Maps APIs to collect data about traffic incidents
 
+##Example Usage
+
+@bing_fetcher = Traffic::BingFetcher.new(api_key)
+@bing_fetcher.fetch("Washington, DC") # returns hash of traffic incident data around D.C.
 
 ##To Do:
-* Generalize location for BING API
+* Increase accuracy of bounding box around a coordinate
 * Incidents along a path
 * Estimated driving time between points
-* Increase accuracy of bounding box around a coordinate
+* Error Handling e.g. when location can't be matched
+* Change optional radius '''fetch parameter to be in miles (currently lat/long degrees)
+* DRY up code (several similar methods exist for Map)
+
 
 
 ##Questions:

@@ -18,7 +18,7 @@ module Traffic
     end
 
     def parse_coordinates_from (response)
-      JSON.parse(response)["results"].first["locations"].first["latLng"]      
+      JSON.parse(response)["results"].first["locations"].first["latLng"]
     end
 
     
