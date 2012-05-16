@@ -1,4 +1,4 @@
-require './../traffic_fetcher.rb'  # more elegant way to require?
+require '../traffic_fetcher.rb'  # more elegant way to require?
 
 module Traffic
 	describe MapQuestFetcher do
@@ -7,7 +7,7 @@ module Traffic
 		end
 
 		it "returns traffic incident data from MapQuest" do
-			@data = @fetcher.get_incidents
+			@data = @fetcher.fetch("02806")
 			@data.should_not be_empty
 		end
 	end
