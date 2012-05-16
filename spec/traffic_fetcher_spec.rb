@@ -6,9 +6,15 @@ module Traffic
 			@fetcher = MapQuestFetcher.new('Fmjtd%7Cluua2d6t2u%2Cb5%3Do5-hr85g')
 		end
 
-		it "returns traffic incident data from MapQuest" do
-			@data = @fetcher.fetch("02806")
-			@data.should_not be_empty
+		describe '#fetch' do
+			it "fetches traffic data for zip code" do
+				@fetcher.fetch("02806").should_not be_empty
+			end
+			
+			it "fetches traffic data for city, state" do
+				@fetcher.fetch("Baltimore, MD").should_not be_empty
+			end
+
 		end
 	end
 

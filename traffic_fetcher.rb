@@ -7,7 +7,7 @@ module Traffic
 
 
 	class MapQuestFetcher
-		attr_reader :data, :response, :coordinates
+		attr_reader :data
 				
 		MQ_TRAFFIC_OPTIONS = "&filters=incidents"
 
@@ -16,7 +16,8 @@ module Traffic
 			@geocode_url_base = "http://www.mapquestapi.com/geocoding/v1/address?key=#{api_key}&inFormat=kvp"
 		end
 
-		def fetch (location)			
+		def fetch (location)
+			location.gsub!(' ', '%20')
 			uri = URI.parse("#{@geocode_url_base}&location=#{location}")
 			response = Net::HTTP.get_response(uri).body
 			coordinates = parse_coordinates_from response			
@@ -34,12 +35,12 @@ module Traffic
 			lat_lr = coordinates["lat"] - radius
 		  long_lr = coordinates["lng"] + radius
 		  bounding_box = [lat_ul, long_ul, lat_lr, long_lr].join(',')
-		  uri = URI.parse("#{@traffic_url_base}&boundingBox=#{bounding_box}#{MQ_TRAFFIC_OPTIONS}")
-		  response = Net::HTTP.get_response(uri).body
-		  parse_traffic_data_from response		  
+		  parse_traffic_data_for bounding_box
 		end		
 
-		def parse_traffic_data_from (response)
+		def parse_traffic_data_for (bounding_box)
+			uri = URI.parse("#{@traffic_url_base}&boundingBox=#{bounding_box}#{MQ_TRAFFIC_OPTIONS}")
+		  response = Net::HTTP.get_response(uri).body
 			incidents = JSON.parse(response)["incidents"]
 
 			@data = {
