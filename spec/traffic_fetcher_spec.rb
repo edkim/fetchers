@@ -1,4 +1,4 @@
-require '../traffic_fetcher.rb'  # more elegant way to require?
+require_relative '../lib/traffic_fetcher.rb'  # more elegant way to require?
 
 module Traffic
   describe MapQuestFetcher do
