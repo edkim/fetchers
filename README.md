@@ -1,21 +1,21 @@
-=Traffic Fetcher
-
+Traffic Fetcher
+=====
 
 This program uses the MapQuest and Bing Maps APIs to collect data about traffic incidents
 
 
-To Do:
+##To Do:
 * Generalize location for BING API
 * Incidents along a path
 * Estimated driving time between points
 * Increase accuracy of bounding box around a coordinate
 
 
-==Questions:
+##Questions:
 
 1) Moved API key out of the main app, but its still in tests. Is that ok?
 
-==Assumptions (from wiki.answers.com)
+##Assumptions (from wiki.answers.com)
 
 1° of latitude = about 69.11 miles 
 
